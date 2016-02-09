@@ -70,8 +70,8 @@ function check_product()
         return
     fi
 
-    if (echo -n $1 | grep -q -e "^nexus_") ; then
-       CUSTOM_BUILD=$(echo -n $1 | sed -e 's/^nexus_//g')
+    if (echo -n $1 | grep -q -e "^alliance") ; then
+       CUSTOM_BUILD=$(echo -n $1 | sed -e 's/^alliance//g')
     else
        CUSTOM_BUILD=
     fi
@@ -527,7 +527,7 @@ function breakfast()
     local variant=$2
     CUSTOM_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
-    for f in `/bin/ls vendor/nexus/vendorsetup.sh 2> /dev/null`
+    for f in `/bin/ls vendor/alliance/vendorsetup.sh 2> /dev/null`
         do
             echo "including $f"
             . $f
@@ -543,11 +543,11 @@ function breakfast()
             # A buildtype was specified, assume a full device name
             lunch $target
         else
-            # This is probably just the nexus model name
+            # This is probably just the model name
             if [ -z "$variant" ]; then
                 variant="userdebug"
             fi
-            lunch nexus_$target-$variant
+            lunch alliance_$target-$variant
         fi
     fi
     return $?
