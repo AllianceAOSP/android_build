@@ -1208,7 +1208,7 @@ class BlockDifference(object):
     if not self.src:
       # write the output unconditionally
       script.Print(" ")
-      script.Print("Flashing System..")
+#      script.Print("Installing Alliance...")
     else:
       script.Print("Patching %s image after verification." % (self.partition,))
 
